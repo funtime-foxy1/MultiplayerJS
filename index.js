@@ -155,6 +155,7 @@ function wrong() {
 }
 
 function menu() {
+    LoggingJS.tryFunction(() => {
     const input = add([
         pos(center()),
         anchor("center"),
@@ -180,10 +181,8 @@ function menu() {
     ])
 
     onClick("join", () => {
-        LoggingJS.tryFunction(() => {
-            _name = input.text;
-            go("game");
-        })
+        _name = input.text;
+        go("game");
     })
     onCharInput((ch) => {
         input.text += ch;
@@ -191,6 +190,7 @@ function menu() {
     onKeyPressRepeat("backspace", () => {
         input.text = input.text.substring(0, input.text.length - 1)
     })
+})
 }
 
 scene("game", openGame);
