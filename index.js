@@ -148,11 +148,17 @@ function wrong() {
 function menu() {
     const input = add([
         pos(center()),
-        text("...")
+        text("..."),
+        color(BLACK)
     ])
     const text_container = add([
-        rect(200,50),
+        rect(500,50),
         pos(center())
+    ])
+
+    const button = add([
+        rect(200, 75),
+        pos(center().x, center().y + 50)
     ])
 
     onCharInput((ch) => {
