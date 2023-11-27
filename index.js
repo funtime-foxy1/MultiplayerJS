@@ -177,6 +177,7 @@ function menu() {
     const joinbutton = add([
         rect(200, 75),
         pos(center().x, 85),
+        area(),
         "join"
     ])
 
