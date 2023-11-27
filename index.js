@@ -93,6 +93,8 @@ function user_listen(user) {
     var key = user.key;
     var childData = user.val();
     if (key == loggedInUID) { return }
+    if (childData == null) {return}
+    if (key == null) {return}
 
     loadBean();
 
