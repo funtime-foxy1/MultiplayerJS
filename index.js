@@ -55,7 +55,7 @@ function openGame() {
             return;
         }
 
-        if (localPlayer.pos.y >= 1000) {
+        if (localPlayer.pos.y >= 2000) {
             localPlayer.pos = vec2(0,0);
         }
         debug.log(localPlayer.pos.y);
