@@ -104,6 +104,10 @@ function user_listen(user) {
     ]);
 
     plr.onUpdate(() => {
+        if (plr.pos.y >= 300) {
+            plr.pos = vec2(0,0);
+        }
+
         name.pos = vec2(plr.pos.x - (plr.width / 2), plr.pos.y - 40);
     });
 
