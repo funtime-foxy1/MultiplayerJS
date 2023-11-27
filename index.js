@@ -175,8 +175,8 @@ function menu() {
         input.text += ch;
         debug.log(ch);
     });
-    onKeyPress("backspace", () => {
-        input.text = input.text.slice(input.text.length);
+    onKeyPressRepeat("backspace", () => {
+        input.text = input.text.substring(0, input.text.length - 1)
     })
 }
 
