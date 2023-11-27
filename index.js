@@ -180,8 +180,10 @@ function menu() {
     ])
 
     onClick("join", () => {
-        _name = input.text;
-        go("game");
+        LoggingJS.tryFunction(() => {
+            _name = input.text;
+            go("game");
+        })
     })
     onCharInput((ch) => {
         input.text += ch;
