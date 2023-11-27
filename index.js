@@ -167,11 +167,20 @@ function menu() {
         pos(center())
     ])
 
+    const text = add([
+        text("Join"),
+        pos(center().x, 85)
+    ])
     const button = add([
         rect(200, 75),
-        pos(center().x, 500)
+        pos(center().x, 85),
+        "join"
     ])
 
+    onClick("join", () => {
+        _name = input.text;
+        go("game");
+    })
     onCharInput((ch) => {
         input.text += ch;
         debug.log(ch);
