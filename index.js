@@ -5,6 +5,10 @@ kaboom();
 
 var loggedInUID = "";
 
+window.addEventListener('beforeunload', function (e) {
+    firebase.database().ref('users/' + loggedInUID).remove();
+})
+
 // Define openGame function
 function openGame() {
     setBackground(50, 139, 168);
@@ -42,12 +46,26 @@ function openGame() {
         body({isStatic: true})
     ]);
 
+    let good = true;
+
     localPlayer.onUpdate(() => {
+        if (!good) {
+            go("wrong");
+            firebase.database().ref('users/' + loggedInUID).remove();
+            return;
+        }
+
         tween(camPos(), localPlayer.pos, .05, (p) => camPos(p), easings.easeInOutSine);
         name.pos = vec2(localPlayer.pos.x + (localPlayer.width/2), localPlayer.pos.y - 20);
 
+        firebase.database().ref('users/' + loggedInUID).get().then((snap) => {
+            if (!snap.exists() && good == true) {
+                alert("Data deleted.");
+                good = false;
+            }
+        })
         firebase.database().ref('users/' + loggedInUID).update({
-            pos: { x: localPlayer.pos.x, y: localPlayer.pos.y }
+            pos: { x: Math.round(localPlayer.pos.x), y: Math.round(localPlayer.pos.y) }
         })
     });
 
@@ -88,7 +106,21 @@ function user_listen(user) {
     });
 
     firebase.database().ref('users/' + key + "/pos").on('value', (snap) => {
-        console.log(snap.val());
+        if (snap == null || snap == undefined) {
+            if (plr) {
+                plr.destroy();
+                name.destroy();
+            }
+            return
+        }
+        console.log(snap.val())
+        if (snap.val() == null) {
+            if (plr) {
+                plr.destroy();
+                name.destroy();
+            }
+            return
+        }
         plr.pos = vec2(snap.val().x, snap.val().y);
     });
 }
@@ -103,8 +135,19 @@ function connecting() {
     ]);
 }
 
+function wrong() {
+    setBackground(BLACK);
+    add([
+        text("Something went wrong."),
+        pos(center()),
+        anchor("center"),
+        color(WHITE)
+    ]);
+}
+
 scene("game", openGame);
 scene("connecting", connecting);
+scene("wrong", wrong);
 
 onLoad(() => {
     go("connecting");
