@@ -55,6 +55,10 @@ function openGame() {
             return;
         }
 
+        if (localPlayer.pos.y >= 300) {
+            localPlayer.pos = vec2(0,0);
+        }
+
         tween(camPos(), localPlayer.pos, .05, (p) => camPos(p), easings.easeInOutSine);
         name.pos = vec2(localPlayer.pos.x + (localPlayer.width/2), localPlayer.pos.y - 20);
 
@@ -104,9 +108,6 @@ function user_listen(user) {
     ]);
 
     plr.onUpdate(() => {
-        if (plr.pos.y >= 300) {
-            plr.pos = vec2(0,0);
-        }
         debug.log(plr.pos.y);
 
         name.pos = vec2(plr.pos.x - (plr.width / 2), plr.pos.y - 40);
