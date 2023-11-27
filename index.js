@@ -171,13 +171,15 @@ function menu() {
 
     const join = add([
         text("Join"),
-        pos(center().x, 350),
+        pos(center().x, 400),
+        anchor("center"),
         color(BLACK),
         z(1)
     ])
     const joinbutton = add([
         rect(200, 75),
-        pos(center().x, 350),
+        anchor("center"),
+        pos(center().x, 400),
         area(),
         "join"
     ])
