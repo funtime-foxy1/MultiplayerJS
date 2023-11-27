@@ -158,7 +158,7 @@ function menu() {
     LoggingJS.tryFunction(() => {
     const input = add([
         pos(center()),
-        anchor("center"),
+        // anchor("center"),
         text(""),
         color(BLACK),
         z(1)
