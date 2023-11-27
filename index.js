@@ -145,6 +145,21 @@ function wrong() {
     ]);
 }
 
+function menu() {
+    const text = add([
+        pos(center()),
+        text("...")
+    ])
+    const text_container = add([
+        rect(200,50),
+        pos(center())
+    ])
+
+    onCharInput((ch) => {
+        text.text += ch;
+    })
+}
+
 scene("game", openGame);
 scene("connecting", connecting);
 scene("wrong", wrong);
@@ -153,7 +168,7 @@ onLoad(() => {
     go("connecting");
     firebase.auth().signInAnonymously()
         .then(() => {
-            go("game");
+            go("menu");
         }).catch(() => {
             alert("Couldn't connect...");
         });
