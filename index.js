@@ -171,7 +171,7 @@ onLoad(() => {
         .then(() => {
             go("menu");
         }).catch(() => {
-            alert("Couldn't connect...");
+            go("connecting");
         });
 });
 
