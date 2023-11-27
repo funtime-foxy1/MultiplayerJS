@@ -158,25 +158,26 @@ function menu() {
     LoggingJS.tryFunction(() => {
     const input = add([
         pos(center()),
-        // anchor("center"),
+        anchor("center"),
         text(""),
         color(BLACK),
         z(1)
     ])
     const text_container = add([
         rect(500,50),
+        anchor("center"),
         pos(center())
     ])
 
     const join = add([
         text("Join"),
-        pos(center().x, 85),
+        pos(center().x, 350),
         color(BLACK),
         z(1)
     ])
     const joinbutton = add([
         rect(200, 75),
-        pos(center().x, 85),
+        pos(center().x, 350),
         area(),
         "join"
     ])
