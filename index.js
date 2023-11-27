@@ -163,6 +163,7 @@ function menu() {
 scene("game", openGame);
 scene("connecting", connecting);
 scene("wrong", wrong);
+scene('menu', menu);
 
 onLoad(() => {
     go("connecting");
