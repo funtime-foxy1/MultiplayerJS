@@ -82,6 +82,8 @@ function openGame() {
     });
 }
 
+let ingame = false;
+
 function user_listen(user) {
     var key = user.key;
     var childData = user.val();
@@ -121,6 +123,13 @@ function user_listen(user) {
             }
             return
         }
+        plr.onUpdate(() => {
+            if (ingame == true) {
+                plr.opacity = 1;
+            } else {
+                plr.opacity = 0;
+            }
+        })
         plr.pos = vec2(snap.val().x, snap.val().y);
     });
 }
@@ -149,7 +158,8 @@ function menu() {
     const input = add([
         pos(center()),
         text("..."),
-        color(BLACK)
+        color(BLACK),
+        z(1)
     ])
     const text_container = add([
         rect(500,50),
@@ -158,11 +168,12 @@ function menu() {
 
     const button = add([
         rect(200, 75),
-        pos(center().x, center().y + 50)
+        pos(center().x, 500)
     ])
 
     onCharInput((ch) => {
         input.text += ch;
+        debug.log(ch);
     })
 }
 
