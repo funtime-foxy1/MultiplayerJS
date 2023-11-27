@@ -169,7 +169,9 @@ function menu() {
 
     const text = add([
         text("Join"),
-        pos(center().x, 85)
+        pos(center().x, 85),
+        color(BLACK),
+        z(1)
     ])
     const button = add([
         rect(200, 75),
