@@ -146,7 +146,7 @@ function wrong() {
 }
 
 function menu() {
-    const text = add([
+    const input = add([
         pos(center()),
         text("...")
     ])
@@ -156,7 +156,7 @@ function menu() {
     ])
 
     onCharInput((ch) => {
-        text.text += ch;
+        input.text += ch;
     })
 }
 
