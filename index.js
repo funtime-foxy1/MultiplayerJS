@@ -58,7 +58,7 @@ function openGame() {
         if (localPlayer.pos.y >= 1000) {
             localPlayer.pos = vec2(0,0);
         }
-        debug.log(plr.pos.y);
+        debug.log(localPlayer.pos.y);
 
         tween(camPos(), localPlayer.pos, .05, (p) => camPos(p), easings.easeInOutSine);
         name.pos = vec2(localPlayer.pos.x + (localPlayer.width/2), localPlayer.pos.y - 20);
