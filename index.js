@@ -170,7 +170,7 @@ function menu() {
 
     const join = add([
         text("Join"),
-        pos(center().x + 100, 85 + (75/2)),
+        pos(center().x, 85),
         color(BLACK),
         z(1)
     ])
