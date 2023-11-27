@@ -157,7 +157,8 @@ function wrong() {
 function menu() {
     const input = add([
         pos(center()),
-        text("..."),
+        anchor("center"),
+        text(""),
         color(BLACK),
         z(1)
     ])
