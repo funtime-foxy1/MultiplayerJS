@@ -1,5 +1,5 @@
 var parms = new URLSearchParams(new URL(window.location.href).searchParams);
-var _name = parms.get('name');
+let _name = parms.get('name');
 
 kaboom();
 
@@ -185,7 +185,6 @@ function menu() {
     })
     onCharInput((ch) => {
         input.text += ch;
-        debug.log(ch);
     });
     onKeyPressRepeat("backspace", () => {
         input.text = input.text.substring(0, input.text.length - 1)
